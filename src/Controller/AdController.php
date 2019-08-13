@@ -15,11 +15,29 @@ class AdController extends AbstractController
      */
     public function index(AdRepository $repo, Session $session)
     {
-        dump($session);
         $ads = $repo->findAll();
 
         return $this->render('ad/index.html.twig', [
             'ads' => $ads
         ]);
     }
+
+    /**
+     * Cette fonction affiche une seule annonce
+     *
+     * @Route("/ads/{slug}", name="ads_show")
+     * 
+     * @return Response
+     */
+    public function show($slug, adRepository $repo){
+
+        $ad = $repo->findOneBySlug($slug);
+
+        return $this->render('ad/show.html.twig',[
+
+            'ad'=> $ad
+        ]);
+    }
+
+
 }
