@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
+use App\Form\AdType;
 use App\Repository\AdRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -24,26 +27,39 @@ class AdController extends AbstractController
     }
 
     /**
-     *Permet de creer une annomce
-     *@Route("/ads/new",name="ads_create")
+     *
+     * Permet de creer une annomce
+     *
+     * @Route("/ads/new",name="ads_create")
+     * 
      * @return Response
      */
-    public function create(){
-
+    public function create(Request $request, ObjectManager $manager){
         $ad = new Ad();
-        $form = $this->createFormBuilder($ad)
-            ->add('title')
-            ->add('introduction')
-            ->add('content')
-            ->add('rooms')
-            ->add('price')
-            ->add('coverImage')
-            ->add('save', SubmitType::class, [
-                'label' => 'Ajouter votre annonce',
-                'attr' => ['class'=> 'btn btn-primary']
-            ])
-            ->getForm();
 
+        $form = $this->createForm(AdType::class, $ad);
+
+        // $request->request->get('title');
+        $form->handleRequest($request);
+        
+        // dump($ad);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            // $manager = $this->getDoctrine()->getManager();
+            $manager->persist($ad);
+            $manager->flush();
+            
+            //methode addFlash du controller
+            $this->addFlash(
+                'success',
+                "L'annonce <strong>{$ad->getTitle()}</strong> a bien été enregistrée !"
+            );
+            
+            return $this->redirectToRoute('ads_show',[
+                'slug' => $ad->getSlug()
+                ]);
+            }
+            
         return $this->render('ad/new.html.twig', [
             'form' => $form->createView()
         ]);
