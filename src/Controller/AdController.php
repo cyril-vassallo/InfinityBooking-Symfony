@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Form\AdType;
+use App\Entity\Image;
 use App\Repository\AdRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -45,6 +46,10 @@ class AdController extends AbstractController
         // dump($ad);
         
         if($form->isSubmitted() && $form->isValid()){
+            foreach($ad->getImages() as $image){
+                $image->setAd($ad);
+                $manager->persist($image);
+            }
             // $manager = $this->getDoctrine()->getManager();
             $manager->persist($ad);
             $manager->flush();
@@ -55,7 +60,7 @@ class AdController extends AbstractController
                 "L'annonce <strong>{$ad->getTitle()}</strong> a bien été enregistrée !"
             );
             
-            return $this->redirectToRoute('ads_show',[
+            return $this->redirectToRoute('ads_show', [
                 'slug' => $ad->getSlug()
                 ]);
             }
