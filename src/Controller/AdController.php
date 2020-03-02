@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
-use App\Form\AdType;
 use App\Entity\Image;
+use App\Form\AnnonceType;
 use App\Repository\AdRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -18,8 +18,7 @@ class AdController extends AbstractController
     /**
      * @Route("/ads", name="ads_index")
      */
-    public function index(AdRepository $repo, Session $session)
-    {
+    public function index(AdRepository $repo, Session $session) {
         $ads = $repo->findAll();
 
         return $this->render('ad/index.html.twig', [
@@ -29,16 +28,17 @@ class AdController extends AbstractController
 
     /**
      *
-     * Permet de creer une annomce
+     * Permet de créer une annonce
      *
      * @Route("/ads/new",name="ads_create")
      * 
      * @return Response
      */
-    public function create(Request $request, ObjectManager $manager){
+    public function create(Request $request){
         $ad = new Ad();
 
-        $form = $this->createForm(AdType::class, $ad);
+        //creation du formulaire a partir de la class du formulaire créé avec la cli php bin/console make:form et l'entité à binder
+        $form = $this->createForm(AnnonceType::class, $ad);
 
         // $request->request->get('title');
         $form->handleRequest($request);
@@ -50,11 +50,11 @@ class AdController extends AbstractController
                 $image->setAd($ad);
                 $manager->persist($image);
             }
-            // $manager = $this->getDoctrine()->getManager();
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($ad);
             $manager->flush();
             
-            //methode addFlash du controller
+            //method addFlash
             $this->addFlash(
                 'success',
                 "L'annonce <strong>{$ad->getTitle()}</strong> a bien été enregistrée !"
@@ -71,18 +71,16 @@ class AdController extends AbstractController
     }
 
     /**
-     * Cette fonction affiche une seule annonce grace au convert parametter
+     * Cette fonction affiche une seule annonce grace au ParamConverter qui inject un objet qui dépend du paramètre dans la route
      *
      * @Route("/ads/{slug}", name="ads_show")
      * 
      * @return Response
      */
-
-        public function show(Ad $ad){
+    public function show(Ad $ad){
         return $this->render('ad/show.html.twig',[
-
-            'ad'=> $ad
-        ]);
+        'ad'=> $ad
+    ]);
     }
 
 

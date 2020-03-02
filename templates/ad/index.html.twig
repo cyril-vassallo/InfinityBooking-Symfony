@@ -7,6 +7,7 @@
         <h1 class="my-3">Voici les annonces de nos hôtes !</h1>
         <div class="row">
             {% for ad in ads %}
+                {# to factorise, set twig path in a variable called url #}
                 {% set url = path('ads_show',{'slug': ad.slug})%}
                 <div class="col-md-4">
                     <div class="card bg-light mb-3">

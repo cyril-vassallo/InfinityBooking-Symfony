@@ -7,7 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController{
-    
 
     /**
      * @Route("hello/{prenom}/age/{age}", name="hello")
@@ -22,13 +21,10 @@ class HomeController extends AbstractController{
         ]); 
     }
 
-
     /**
      * @Route("/", name="homepage")
      */
     public function home(){
-
-
         return $this->render('home.html.twig');
     }
 }

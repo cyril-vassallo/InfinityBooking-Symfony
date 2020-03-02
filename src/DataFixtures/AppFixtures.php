@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('FR-fr');
+        $faker = Factory::create('fr-FR');
 
         for($i=1; $i<=30; $i++){
 
