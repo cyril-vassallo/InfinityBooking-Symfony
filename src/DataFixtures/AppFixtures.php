@@ -2,9 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Image; // add by me
 use App\Entity\Ad; //add by me
 use Faker\Factory; // add by me
+use App\Entity\Image; // add by me
+// use Xvladqt\Faker\LoremFlickrProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -13,11 +14,12 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr-FR');
+        // $faker->addProvider(new LoremFlickrProvider($faker));
 
         for($i=1; $i<=30; $i++){
 
             $title = $faker->sentence();
-            $coverImage = $faker->imageUrl(1000,350);
+            $coverImage = $faker->imageUrl(1000, 350);
             $introduction =  $faker->paragraph(2);
             $content = '<p>'.join('</p><p>', $faker->paragraphs(5)).'</p>';
 

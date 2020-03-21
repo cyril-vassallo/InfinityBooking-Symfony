@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d74ce19667d7b9ebe553bbb877852f0",
+    "content-hash": "f3ea7e309908a38148bb4b16ac3eaf04",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -5977,6 +5977,51 @@
                 "validate"
             ],
             "time": "2020-02-14T12:15:55+00:00"
+        },
+        {
+            "name": "xvladqt/faker-lorem-flickr",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xvladxtremal/Faker-LoremFlickr.git",
+                "reference": "f134da1104efbd1243d59a6c9cdb40e32a27f76f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xvladxtremal/Faker-LoremFlickr/zipball/f134da1104efbd1243d59a6c9cdb40e32a27f76f",
+                "reference": "f134da1104efbd1243d59a6c9cdb40e32a27f76f",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "~1",
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Xvladqt\\Faker\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladyslav Volynets",
+                    "email": "xvladxtreme@gmail.com"
+                }
+            ],
+            "description": "loremflickr.com provider for Faker",
+            "keywords": [
+                "faker",
+                "loremflickr.com",
+                "provider"
+            ],
+            "time": "2020-01-24T06:28:04+00:00"
         }
     ],
     "packages-dev": [
@@ -6877,7 +6922,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "xvladqt/faker-lorem-flickr": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
