@@ -3,14 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
-use App\Entity\Image;
+// use App\Entity\Image;
 use App\Form\AnnonceType;
 use App\Repository\AdRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+// use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdController extends AbstractController
@@ -31,6 +34,8 @@ class AdController extends AbstractController
      * Permet de créer une annonce
      *
      * @Route("/ads/new",name="ads_create")
+     * @IsGranted("ROLE_USER")
+     * 
      * 
      * @return Response
      */
@@ -85,6 +90,7 @@ class AdController extends AbstractController
      * Permet d'afficher le formulaire d'édition
      * 
      * @Route("ads/{slug}/edit" , name="ads_edit")
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Cette annonce ne vous appartient pas, vous ne pouvez pas la modifier")
      *
      * @return response
      */
@@ -131,22 +137,26 @@ class AdController extends AbstractController
     public function show(Ad $ad){
         return $this->render('ad/show.html.twig',[
         'ad'=> $ad
-    ]);
-    }
-
-
-    /*
-    *Function avec injection de dependence
-    *
-    public function show($slug, adRepository $repo){
-
-        $ad = $repo->findOneBySlug($slug);
-
-        return $this->render('ad/show.html.twig',[
-
-            'ad'=> $ad
         ]);
     }
-    */
+
+    /**
+     * Cette function permet de géré la suppression des annonces d'un utilisateur connecté
+     * 
+     * @Route("/ads/{slug}/delete", name="ads_delete")
+     * 
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Vous n'avez pas me droit d'accèder à cette ressource")
+     * @return Response
+     */
+    public function delete(Ad $ad, EntityManagerInterface $manager){
+        $manager->remove($ad);
+        $manager->flush();
+
+        $this->addFlash(
+            "success",
+            "Cette annonce à bien été supprimée ");
+
+        return $this->redirectToRoute("ads_index");
+    }
 
 }

@@ -1,13 +1,13 @@
-.ad-title{
+.announce-title{
     color: white;
     text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+
 }
 
-div.ad-title{
+div.announce-title{
     padding:2em;
     background-size: cover;
     background-position: center center; 
-
 }
 
 div.container{

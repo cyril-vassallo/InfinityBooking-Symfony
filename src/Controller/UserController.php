@@ -10,6 +10,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/user/{slug}", name="user_show")
+     * 
      */
     public function index(User $user)
     {

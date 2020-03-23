@@ -75,7 +75,7 @@ class Ad
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Url
+     * @Assert\Url(message="veuillez renseignez une URL valide pour votre photo de profil")
      */
     private $coverImage;
 

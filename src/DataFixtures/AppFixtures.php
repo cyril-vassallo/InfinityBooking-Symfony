@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Ad; 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Image; 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -24,7 +25,20 @@ class AppFixtures extends Fixture
         
         $faker = Factory::create('fr-FR');
         // $faker->addProvider(new LoremFlickrProvider($faker));
-        
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);
+
+        $adminUser = new User();
+        $adminUser->setFirstName('Cyril')
+                    ->setLastName('Vassallo')
+                    ->setPicture('https://randomuser.me/api/portraits/men/12')
+                    ->setEmail('cyrilvssll34@gmail.com')
+                    ->setIntroduction($faker->sentence())
+                    ->setDescription('<p>'.join('</p><p>', $faker->sentences(1)).'</p>')
+                    ->setHash($this->encoder->encodePassword($adminUser,'password'))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser);
         
         //nous gérons les utilisateurs
         $users = [];
@@ -47,7 +61,7 @@ class AppFixtures extends Fixture
                 ->setLastName($faker->lastname)
                 ->setEmail($faker->email)
                 ->setIntroduction($faker->sentence())
-                ->setDescription('<p>'.join('</p><p>', $faker->sentences(3)).'</p>')
+                ->setDescription('<p>'.join('</p><p>', $faker->sentences(2)).'</p>')
                 ->setHash($hash)
                 ->setPicture($picture);
 

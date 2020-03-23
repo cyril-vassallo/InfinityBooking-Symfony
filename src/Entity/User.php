@@ -95,6 +95,11 @@ class User implements UserInterface
      */
     private $ads;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Role", mappedBy="users")
+     */
+    private $userRoles;
+
     public function getFullName(){
         return "{$this->firstName} {$this->lastName}";
     }
@@ -118,6 +123,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->ads = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -268,8 +274,22 @@ class User implements UserInterface
     /* Returns the roles granted to the user.
      */
     public function getRoles()
-    {
-        return ['ROLE_USER'];
+    {   
+        // insuffisant il faut transformer l'arrayCollection avec map() et la méthode toArray
+        // $roles = $this->userRoles->toArray();
+        // dump($roles); // met en forme de tableau complexe l'objet userRoles arrayCollection
+
+        //utilisation de la fonction map() pour transformer un objet plus gros en un plus petit
+        $roles = $this->userRoles->map(function($role){
+            return $role->getTitle();
+        })->toArray();
+        //ajout du role de base à ceux renvoyé par l'arrayCollection userRoles
+        $roles[] = 'ROLE_USER';
+        // dump($roles);
+        // die;
+        //la fonction getRoles va donc retourner tous les roles
+        //cad ceux en base de données et celui par défault pour l'utilisateur lors de sa connexion
+        return $roles;  
     }
 
     /**
@@ -295,5 +315,33 @@ class User implements UserInterface
      * Removes sensitive data from the user.
      */
     public function eraseCredentials(){}
+
+    /**
+     * @return Collection|Role[]
+     */
+    public function getUserRoles(): Collection
+    {
+        return $this->userRoles;
+    }
+
+    public function addUserRole(Role $userRole): self
+    {
+        if (!$this->userRoles->contains($userRole)) {
+            $this->userRoles[] = $userRole;
+            $userRole->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserRole(Role $userRole): self
+    {
+        if ($this->userRoles->contains($userRole)) {
+            $this->userRoles->removeElement($userRole);
+            $userRole->removeUser($this);
+        }
+
+        return $this;
+    }
 
 }
