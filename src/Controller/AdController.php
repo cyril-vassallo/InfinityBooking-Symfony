@@ -59,6 +59,8 @@ class AdController extends AbstractController
                 $image->setAd($ad);
                 $manager->persist($image);
             }
+            //liaison avec l'utilisateur connecté
+            $ad->setAuthor($this->getUser());
             //$manager = $this->getDoctrine()->getManager(); // sans injection de dépendances
             $manager->persist($ad); // préparer l'enregistrement des données dans $ad
             $manager->flush(); //

@@ -12,14 +12,31 @@
                 <li class="nav-item active">
                 <a class="nav-link" href="{{path('ads_index')}}">Annonces <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{path('ads_create')}}">Nouvelle annonce <span class="sr-only">(current)</span></a>
-            </li>
         </ul>
         <lu class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{path('homepage')}}">Mon compte! <span class="sr-only">(current)</span></a>
+        {% if app.user %}
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink" >
+                    <img src="{{app.user.picture}}" class="avatar avatar-mini" alt="Avatar de {{app.user.fullName}}"> {{ app.user.fullName}} </img>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelleby="accountDropdownLink">
+                    <a href="{{ path('ads_create')}}" class="dropdown-item">Créer une annonce</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ path('account_index')}}" class="dropdown-item">Mon Compte</a>
+                    <a href="{{ path('account_profile')}}" class="dropdown-item">Modifier mon profil</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ path('account_logout')}}" class="dropdown-item">Déconnexion</a>
+                </div>
             </li>
+     
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('account_register')}}">Inscription <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('account_login')}}">Connexion <span class="sr-only">(current)</span></a>
+            </li>
+        {% endif %}
         </lu>
     </div>
 </nav>

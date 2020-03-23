@@ -66,9 +66,9 @@ class Ad
      * @ORM\Column(type="text")
      * @Assert\Length(
      * min = 25,
-     * max = 255,
+     * max = 999,
      * minMessage = "Détaillez un peu plus votre bien, taille minimale 25 caractères",
-     * maxMessage = "Vous ête limité à 255 caractères pour détailler votre annonce" 
+     * maxMessage = "Vous êtes limité à 255 caractères pour détailler votre annonce" 
      * )
      */
     private $content;
@@ -93,6 +93,12 @@ class Ad
      * @Assert\Valid()
      */
     private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="ads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
 
     public function __construct()
     {
@@ -231,6 +237,18 @@ class Ad
                 $image->setAd(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
