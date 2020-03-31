@@ -33,3 +33,11 @@ div.carousel-caption{
     max-width: 24px;
     max-height: 24px;
 }
+
+
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    color: firebrick!important;
+    font-weight: 400;
+    background: linear-gradient( 0.25turn,#eec6c6, #eed9d9)!important;
+}

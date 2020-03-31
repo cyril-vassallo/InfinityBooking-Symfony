@@ -20,6 +20,7 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
+                default_target_path: ads_index
             logout:
                 path: account_logout
                 target: account_login

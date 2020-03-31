@@ -28,11 +28,7 @@ class AccountController extends AbstractController
     public function login(AuthenticationUtils $utils)
     {
         $error = $utils->getLastAuthenticationError();
-        dump($error);
         $lastUserName = $utils->getLastUsername();
-        dump($lastUserName);
-
-            
 
         return $this->render('account/login.html.twig', [
             'hasError' => $error !== null,
@@ -169,6 +165,15 @@ class AccountController extends AbstractController
         return $this->render('user/index.html.twig', [
             'user' => $this->getUser()
         ]);
-
+    }
+    /**
+     * Permet d'afficher la liste des réservations faites par l'utilisateur
+     * 
+     * @Route("/account/bookings", name="account_bookings")
+     *
+     * @return Response
+     */
+    public function bookings(){
+        return $this->render('account/bookings.html.twig');
     }
 }

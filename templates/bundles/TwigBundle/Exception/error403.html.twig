@@ -1,0 +1,11 @@
+{% extends 'base.html.twig'%}
+{% block title%}Page non authorisée !{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Vous tentez d'accèder a une ressource sans authorisation ?!</h1>
+        <div class='alert alert-danger'>
+            <p>Vous n'avez pas l'autorisation d'acceder à cette page. Vous devez retourner à l'accueil et utiliser les fonctionnalités du site auxquelles vous avez droit ! </p>
+        </div>
+        <a href="{{path('homepage')}}" class="btn btn-primary">Retour à l'accueil</a>
+    </div>
+{% endblock %}

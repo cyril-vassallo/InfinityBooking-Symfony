@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservez l'annonce: {{ ad.title }} {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=" crossorigin="anonymous" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Reservez pour l'annoce:  {{ ad.title }}</h1>
+<p>Vous êtes sur le point de réserver le bien de <strong>{{ad.author.fullname}}</strong>, dites nous tout, on s'occupe du reste !</p>
+
+{{ form_start(form) }}
+    <div class="alert alert-light">
+        <p>Commencez par nous dire quelles sont les dates qui vous intéressent !</p>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.startDate) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.endDate) }}
+            </div>
+        </div>
+        <h4>Montant du séjour : <span id="amount">...</span>&euro;</h4>
+        <span id="days">0</span> nuit(s) à {{ad.price}}&euro; / nuit
+        <h4 class="mt-3">Vous avez un comentaire ?</h4>
+        {{ form_row(form.comment )}}
+    </div>
+
+    <h2>Vous avez terminé !</h2>
+    <P>Vacances de rêve ? Hébergement pour le boulot ? Peu importe, on est avec vous !</P>
+    <button type="submit" class="btn btn-success">Je réservez</button>
+
+{{ form_end(form) }}
+
+
+</div>
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+    <script>
+        const oneNightPrice = "{{ ad.price }}";
+        const notAvailableDays = [
+        {% for day in ad.notAvailableDays %}
+            "{{ day.format('d/m/Y') }}",
+        {% endfor %}
+        ];
+    </script>
+    <script src='/js/booking.js'></script>
+{% endblock %}

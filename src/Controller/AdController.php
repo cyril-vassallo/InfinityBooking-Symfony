@@ -3,15 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
-// use App\Entity\Image;
+
 use App\Form\AnnonceType;
 use App\Repository\AdRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\Session;
-// use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +18,7 @@ class AdController extends AbstractController
     /**
      * @Route("/ads", name="ads_index")
      */
-    public function index(AdRepository $repo, Session $session) {
+    public function index(AdRepository $repo) {
         $ads = $repo->findAll();
 
         return $this->render('ad/index.html.twig', [
