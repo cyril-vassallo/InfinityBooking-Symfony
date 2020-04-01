@@ -43,7 +43,11 @@ class AnnonceType extends ApplicationType
             )
             ->add("rooms", 
                 IntegerType::class, 
-                $this->getConfiguration("Nombre de chambres", "Indiquez le nombre de chambre disponible de votre annonce")
+                $this->getConfiguration("Nombre de chambres", "Indiquez le nombre de chambre disponible de votre annonce",[
+                    'attr'=> [
+                        'min' => 0
+                    ]
+                ])
             )
             ->add("price", 
                 MoneyType::class,

@@ -41,3 +41,22 @@ div.carousel-caption{
     font-weight: 400;
     background: linear-gradient( 0.25turn,#eec6c6, #eed9d9)!important;
 }
+
+span.rating i {
+    color: goldenrod
+}
+
+
+div.announce-title .btn {
+    margin-top: 2em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+.alert a{
+    text-decoration: none;
+}
+
+.alert .btn{
+    color: white;
+}
