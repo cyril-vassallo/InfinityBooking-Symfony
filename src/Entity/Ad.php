@@ -55,9 +55,9 @@ class Ad
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      * min = 10,
-     * max = 30,
+     * max = 255,
      * minMessage = "Votre titre d'annonce est bien trop court",
-     * maxMessage = "Votre titre d'annonce est bien trop long" 
+     * maxMessage = "Votre titre d'annonce est bien trop long 255 caractères max" 
      * )
      */
     private $title;
