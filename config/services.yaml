@@ -23,5 +23,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    # Configuration to define the default template path for 
+    # PaginationService class in service Folder
+    App\Service\PaginationService:
+        arguments:
+            $templatePath: "admin/partials/pagination.html.twig"
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
