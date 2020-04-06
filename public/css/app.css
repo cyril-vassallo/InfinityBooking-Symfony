@@ -10,7 +10,7 @@ div.announce-title{
     background-position: center center; 
 }
 
-div.container{
+div.container, div.container-fluid{
     margin-top: 20px; 
 }
 div.carousel-caption{

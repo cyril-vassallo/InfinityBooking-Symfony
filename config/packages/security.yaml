@@ -13,7 +13,7 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        # Firewall admin pour toutes les addresses débutant par admin/ sauf admin/login  
         admin:
             pattern: ^/admin
             anonymous: true
@@ -23,7 +23,7 @@ security:
             form_login:
                 login_path: admin_account_login
                 check_path: admin_account_login
-                default_target_path: admin_ads_index
+                default_target_path: admin_dashboard_index
             
             logout:
                 path: admin_account_logout

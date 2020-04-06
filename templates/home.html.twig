@@ -17,94 +17,28 @@
     </div>
     <h2 class="h2 my-5">Nos appartements stars</h2>
     <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    3 chanbres, <strong>49&euro; /nuit </strong> </br>
-                    <small>Pas encrore noté</small>
-                </div>
-                <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height:200px;width:100%; display:block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Appartement de ouf !
-                    </h4>
-                    <p class="card-text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga aliquid ut culpa nulla facere autem earum, similique sed itaque suscipit!
-                    </p>
-                <a href="#" class="btn btn-secondary">En savoir plus!</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    3 chanbres, <strong>49&euro; /nuit </strong> </br>
-                    <small>Pas encrore noté</small>
-                </div>
-                <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height:200px;width:100%; display:block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Appartement de ouf
-                    </h4>
-                    <p class="card-text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga aliquid ut culpa nulla facere autem earum, similique sed itaque suscipit!
-                    </p>
-                <a href="#" class="btn btn-secondary">En savoir plus!</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    3 chanbres, <strong>49&euro; /nuit </strong> </br>
-                    <small>Pas encrore noté</small>
-                </div>
-                <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height:200px;width:100%; display:block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Appartement de ouf
-                    </h4>
-                    <p class="card-text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga aliquid ut culpa nulla facere autem earum, similique sed itaque suscipit!
-                    </p>
-                <a href="#" class="btn btn-secondary">En savoir plus!</a>
-                </div>
-            </div>
-        </div>
+        {% for data in bestAds %}
+            {% include "ad/_ad.html.twig" with {'ad': data.ad} %}
+        {% endfor %}
     </div>
-
     <h2 class="h2 my-5">Nos propriétaires stars !</h2>
 
     <div class="row">
+        {% for data in bestUsers %}
         <div class="col-md-6">
             <div class="card border-secondary mb-3">
                 <div class="card-body">
-                   <h4 class="card-title">Charles Lang</h4>
-                   <hr>
-                   <div class="card-text">
-                   <img src="http://placehold.it/64x64" alt="Avatar de Charles Lang" class="float-left mr-3">
-                   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quae voluptates assumenda nemo aliquam cumque eaque, tempore officiis quis nostrum.</p> 
-                   <a href="#" class="btn btn-success float-right">En savoir plus!</a>
-                   </div>
+                    <h4 class="card-title">{{data.user.fullName}}</h4>
+                    <hr>
+                    <div class="card-text">
+                    <img src="{{data.user.picture}}" alt="Avatar de {{data.user.fullName}}" class="float-left mr-3">
+                    <p>{{data.user.introduction}}</p> 
+                    <a href="{{path('user_show', {slug: data.user.slug}) }}" class="btn btn-success float-right">En savoir plus!</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                   <h4 class="card-title">Cyril Vassallo</h4>
-                   <hr>
-                   <div class="card-text">
-                   <img src="http://placehold.it/64x64" alt="Avatar de Charles Lang" class="float-left mr-3">
-                   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quae voluptates assumenda nemo aliquam cumque eaque, tempore officiis quis nostrum.</p> 
-                   <a href="#" class="btn btn-success float-right">En savoir plus!</a>
-                   </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     
 </div>
