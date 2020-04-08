@@ -1,12 +1,12 @@
-# Symfony  - Booking application website
+# Symfony  - Booking website application
 
 
-## This repository contain a complet application website on Symfony 4.3
+## This repository contain an all Booking website application on Symfony 4.3
 
-### This is a booking website
+### This is a Booking website application
 This web site illustrate and archive all my learning on Symfony4.3
 
-### With a front and back office application included i learned how to:
+### With a front and back office included i learned how to:
 - create entity, controller, form and fixture with the Symfony CLI
 - install a database and a versioning with the CLI
 - create an user connexion
