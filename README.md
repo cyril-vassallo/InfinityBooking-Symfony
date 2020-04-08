@@ -1,4 +1,4 @@
-# Symfony complet application website
+# Symfony  - Booking application website
 
 
 ## This repository contain a complet application website on Symfony 4.3
@@ -8,17 +8,16 @@ This web site illustrate and archive all my learning on Symfony4.3
 
 ### With a front and back office application included i learned how to:
 - create entity, controller, form and fixture with the Symfony CLI
+- install a database and a versioning with the CLI
 - create an user connexion
 - create roles for users
-- configure the security.yaml file
-- create an admin firewall on the back-office
+- configure the security.yaml file and create a firewall for the admin routes
 - create user profile edition page
 - create edit and remove ads
 - create edit and remove booking
 - create edit and remove comments relate to ads
 - create fields validation and checking
 - create back-end forms
-- install database and versioning
 - create new DQL and QueryBuilder to request the database
 - create a dashboard !
 - create a Services layer !
