@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     console.log('Bootstrap-datePicker script started ')
     console.log('notAvailableDays:'+ notAvailableDays)

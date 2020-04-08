@@ -1,5 +1,5 @@
     $('#add-image').click(function(){
-        //Je récupere le numéro du futur champ que je vais créer
+        //Je récupère le numéro du futur champ que je vais créer
         const index = +$('#widgets-counter').val();
         console.log(index);
 
@@ -11,10 +11,10 @@
         // J'inject ce code au sein de la div
         $('#annonce_images').append(template);
 
-        //J'incremente le widget compteur
+        //J'incrémente le widget compteur
         $('#widgets-counter').val(index + 1);
 
-        //Je gere le bouton suprimer
+        //Je gere le bouton supprimer
         handleDeleteButtons();
     });
 
