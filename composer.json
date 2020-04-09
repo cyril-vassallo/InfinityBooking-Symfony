@@ -31,7 +31,7 @@
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*",
-        "xvladqt/faker-lorem-flickr": "dev-master",
+        "xvladqt/faker-lorem-flickr": "dev-master"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",
