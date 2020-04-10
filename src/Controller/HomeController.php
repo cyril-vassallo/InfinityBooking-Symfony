@@ -16,11 +16,11 @@ class HomeController extends AbstractController{
     public function home(AdRepository $adRepo, UserRepository $userRepo){
         $this->addFlash(
             'danger',
-            "Attention !! Ce site n'est pas un réel site de réservation. Il est une démonstration pour portfolio développeur. Cette application tourne sur <a href='https://symfony.com/'><strong> Symfony 4.3 </strong></a> installé dans un service container de Heroku !"
+            "Attention !! <strong>Ce site n'est pas un réel site de réservation!!</strong> Il est une démonstration pour portfolio développeur. Cette cloud application tourne sur <a href='https://symfony.com/'><strong><i class='fas fa-link'></i>Symfony 4.3 </strong></a> installé dans un service container de <a href='https://www.heroku.com/'><strong> <i class='fas fa-link'></i>Heroku</strong></a> !"
         );
         $this->addFlash(
             'warning',
-            "Certaines des images peuvent ne pas s'afficher correctement car les sources proviennent de l'api <a href='http://lorempixel.com/'><strong> lorempixel.com </strong> </a>très largement sollicitée par la communauté des développeurs, merci de votre comprehension."
+            "Certaines des images peuvent ne pas s'afficher correctement car les sources proviennent de l'api <a href='http://lorempixel.com/'><strong> <i class='fas fa-link'></i>lorempixel.com </strong> </a>très largement sollicitée par la communauté des développeurs, merci de votre comprehension."
         );
 
 
