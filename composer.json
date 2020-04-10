@@ -13,6 +13,7 @@
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
+        "symfony/dotenv": "4.3.*",
         "symfony/expression-language": "4.3.*",
         "symfony/flex": "^1.3.1",
         "symfony/form": "4.3.*",
@@ -34,7 +35,6 @@
         "xvladqt/faker-lorem-flickr": "dev-master"
     },
     "require-dev": {
-        "symfony/dotenv": "4.3.*",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",

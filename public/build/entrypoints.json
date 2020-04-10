@@ -1,0 +1,30 @@
+{
+  "entrypoints": {
+    "js/app": {
+      "js": [
+        "/build/runtime.0c796a0d.js",
+        "/build/js/app.5c19d6ef.js"
+      ]
+    },
+    "js/ad": {
+      "js": [
+        "/build/runtime.0c796a0d.js",
+        "/build/js/ad.ac517157.js"
+      ]
+    },
+    "js/booking": {
+      "js": [
+        "/build/runtime.0c796a0d.js",
+        "/build/js/booking.1ad8ffd7.js"
+      ]
+    },
+    "css/app": {
+      "js": [
+        "/build/runtime.0c796a0d.js"
+      ],
+      "css": [
+        "/build/css/app.e34cb8c7.css"
+      ]
+    }
+  }
+}
