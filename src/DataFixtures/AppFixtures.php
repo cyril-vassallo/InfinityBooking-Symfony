@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
         for($i=1; $i<=30; $i++){
 
             $title = $faker->sentence();
-            $coverImage = $faker->imageUrl(1000, 350);
+            $coverImage = $faker->unique()->imageUrl(1000, 350, 'city');
             $introduction =  $faker->paragraph(2);
             $content = '<p>'.join('</p><p>', $faker->paragraphs(5)).'</p>';
             //on prend au hasard un utilisateur dans le tableau
@@ -94,7 +94,7 @@ class AppFixtures extends Fixture
             for($j= 1; $j<= mt_rand(2,5);$j++){
                 $image = new Image();
 
-                $image->setUrl($faker->imageUrl())
+                $image->setUrl($faker->imageUrl(500,350))
                         ->setCaption($faker->sentence())
                         ->setAd($ad);
 
