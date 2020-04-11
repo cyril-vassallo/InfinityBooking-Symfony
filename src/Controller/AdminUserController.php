@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminUserController extends AbstractController
 {
     /**
-     * @Route("/admin/user{page<\d+>?1}", name="admin_user_index")
+     * @Route("/admin/user{page<\d+>?1}", name="admin_users_index")
      */
     public function index($page, PaginationService $pagination)
     {
@@ -49,7 +49,7 @@ class AdminUserController extends AbstractController
             );
         }
 
-        return $this->redirectToRoute('admin_user_index');
+        return $this->redirectToRoute('admin_users_index');
     }
 
 }
