@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\AdRepository;
 use App\Repository\UserRepository;
-use Egulias\EmailValidator\Warning\Warning;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -16,7 +15,7 @@ class HomeController extends AbstractController{
     public function home(AdRepository $adRepo, UserRepository $userRepo){
         $this->addFlash(
             'danger',
-            "Attention !! <strong>Ce site n'est pas un réel site de réservation!!</strong> Il est une démonstration web!. Basé sur le framework <a href='https://symfony.com/'><strong><i class='fas fa-link'></i>Symfony 4.3  </strong></a> et installé dans un service container de <a href='https://www.heroku.com/'><strong> <i class='fas fa-link'></i>Heroku</strong></a> !"
+            "Attention !! <strong>Ce site n'est pas un réel site de réservation!!</strong> Il est une démonstration web basée sur le framework <a href='https://symfony.com/'><strong><i class='fas fa-link'></i>Symfony 4.3  </strong></a> et installé dans un service container de <a href='https://www.heroku.com/'><strong> <i class='fas fa-link'></i>Heroku</strong></a> !"
         );
         $this->addFlash(
             'warning',
