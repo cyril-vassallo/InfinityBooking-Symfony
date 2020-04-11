@@ -3,7 +3,6 @@ $(document).ready(function(){
     console.log('notAvailableDays:'+ notAvailableDays)
     $('#booking_startDate, #booking_endDate').datepicker({
         format : 'dd/mm/yyyy',
-        autoclose: true,
         datesDisabled: notAvailableDays
     });
     console.log("oneNightPrice: ", oneNightPrice);

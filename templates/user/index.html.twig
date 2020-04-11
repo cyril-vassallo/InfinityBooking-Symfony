@@ -6,12 +6,12 @@
 
 <div class="container">
     <div class="row align-items-center mb-5">
-        <div class="col-3 text-center">
+        <div class="col-md-3 text-center">
             <img class="avatar mb-3" src="{{user.picture}}" alt="Avatar de {{user.fullName}}">
             <br>
             <span class="badge badge-primary">{{user.ads | length}} annonces</span>
         </div>
-        <div class="col-9">
+        <div class="col-md-9 text-center">
             <h1>{{user.fullName}}</h1>
             {% if user is same as(app.user) %}
                 <div class="mt-3">
