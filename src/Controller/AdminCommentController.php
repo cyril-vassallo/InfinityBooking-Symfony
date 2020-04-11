@@ -63,7 +63,6 @@ class AdminCommentController extends AbstractController
 
     }
 
-
     /**
      * Permet à l'administrateur de supprimer un commentaire
      * 
@@ -84,4 +83,7 @@ class AdminCommentController extends AbstractController
 
         return $this->redirectToRoute('admin_comments_index');
     }
+
+
+
 }
