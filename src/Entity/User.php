@@ -79,7 +79,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="text", length=1000) 
      * @Assert\Length(
-     * min = 100,
+     * min = 20,
      * minMessage = "Votre description doit comporter plus de 100 caractères" 
      * )
      */
